@@ -6,7 +6,7 @@ Expect fully vibe-coded changes. I might do human commits, but they'll likely be
 ## Maybe useful projects
 
 - [GGUF-quant kernels for AMD XDNA](https://github.com/phhusson/amd-npu-gguf)
-- llama.cpp with Apple NPU prefill -- Bonsai 2 27B prefill upgrades from 60 tok/s to 105 tok/s on Apple M4 16GB
+- [bonsai-llama.cpp with Apple NPU prefill](https://github.com/phhusson/llama.cpp/blob/apple/bonsai-pq20/README-Apple.md) -- Bonsai 2 27B prefill upgrades from 60 tok/s to 115 tok/s on Apple M4 16GB
 - llama.cpp with AMD NPU prefill -- Qwen 3.8-Flash-Next UD_IQ1_S prefill upgrade from to 300 tok/s on AMD Ryzen 8845HS
 - llama.cpp with more Hexagon kernels -- No split GPU/NPU prefill, no fences, just more quants in NPU
 
