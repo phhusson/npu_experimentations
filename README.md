@@ -5,9 +5,19 @@ Expect fully vibe-coded changes. I might do human commits, but they'll likely be
 
 ## Maybe useful projects
 
-- [GGUF-quant kernels for AMD XDNA](https://github.com/phhusson/amd-npu-gguf)
+### Apple
+
 - [bonsai-llama.cpp with Apple NPU prefill](https://github.com/phhusson/llama.cpp/blob/apple/bonsai-pq20/README-Apple.md) -- Bonsai 2 27B prefill upgrades from 60 tok/s to 115 tok/s on Apple M4 16GB
+- h3.c-ane with Metal co-work -- h3.c does pure Metal inference, h3.c-ane does pure ANE inference... just merge them for faster inference!
+
+### AMD
+
+- [GGUF-quant kernels for AMD XDNA](https://github.com/phhusson/amd-npu-gguf)
 - llama.cpp with AMD NPU prefill -- Qwen 3.8-Flash-Next UD_IQ1_S prefill upgrade from to 300 tok/s on AMD Ryzen 8845HS
+- sd.cpp with Vulkan/NPU co-work
+
+### Qualcomm
+
 - llama.cpp with more Hexagon kernels -- No split GPU/NPU prefill, no fences, just more quants in NPU
 
 ## Useless non obsolete projects
@@ -84,5 +94,18 @@ Just a very quick overview using words you might have to google, of the NPUs I'v
 
 - Rockchip RK3588's NPU: fixed-pipeline matmul & conv
 - Qualcomm Snapdragon NPU: one-core VLIW RISC
-- AMD XDNA: 16 cores VLIW RISC with FIFO with neighbors (it's a real-life TIS100)
+- AMD XDNA: 4x4 cores VLIW RISC with FIFO with neighbors (it's a real-life TIS100)
 - Apple ANE: It's completely opaque, no idea what that thing does. It seems much more limited than Qualcomm and AMD NPUs, but it looks too capable for a fixed-pipeline.
+
+## My hardware
+
+- Apple Mac Mini M4 16GB
+- Minisforum UM880 Plus with 32GB + 24GB
+- Lenovo T14s Gen 6 Snapdragon - 32GB RAM
+- H96Max rk3588 TVBox with 8GB RAM
+
+Donations I would appreciate:
+- Ryzen AI 395+ 128GB
+- A minipc with an Intel NPU (min 32GB RAM)
+- I'm interested in other NPUs, but it must have at least 8GB of RAM. (There are some RAM-less M.2 NPU, like rpi ai hat+: no thanks)
+- M.2 NVMe with CMB (modern marketting would call them AI SSD)
