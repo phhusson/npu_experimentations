@@ -16,7 +16,7 @@ Expect fully unmaintained vibe-coded changes. I might do human commits, but they
 ### AMD
 
 - [GGUF-quant kernels for AMD XDNA](https://github.com/phhusson/amd-npu-gguf)
-- llama.cpp with AMD NPU prefill -- Qwen 3.8-Flash-Next UD_IQ1_S prefill upgrade from to 300 tok/s on AMD Ryzen 8845HS
+- [llama.cpp with AMD NPU prefill](https://github.com/phhusson/llama.cpp/tree/amd/npu-worktree) -- Qwen 3.8-Flash-Next UD_IQ1_S prefill upgrade from to 300 tok/s on AMD Ryzen 8845HS
 - sd.cpp with Vulkan/NPU co-work
 
 ### Qualcomm
