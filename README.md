@@ -1,14 +1,17 @@
 This git is a documentation-only project.
 
+I'm starting this as a "I" project, but just like my [Android GSI](https://github.com/TrebleDroid/treble_experimentations) I want it to become a community project.
+Feel free to PR here if you want to add your own stuff, also GitHub has wiki pages enabled for this project, use it!
+
 I do lots of experiments with a lot of NPUs with very different architectures, with very different capabilities.
-Expect fully vibe-coded changes. I might do human commits, but they'll likely be worse than the ones made by the LLM.
+Expect fully unmaintained vibe-coded changes. I might do human commits, but they'll likely be worse than the ones made by the LLM.
 
 ## Maybe useful projects
 
 ### Apple
 
 - [bonsai-llama.cpp with Apple NPU prefill](https://github.com/phhusson/llama.cpp/blob/apple/bonsai-pq20/README-Apple.md) -- Bonsai 2 27B prefill upgrades from 60 tok/s to 115 tok/s on Apple M4 16GB
-- h3.c-ane with Metal co-work -- h3.c does pure Metal inference, h3.c-ane does pure ANE inference... just merge them for faster inference!
+- [h3.c-ane with Metal co-work](https://github.com/phhusson/h3.c-ane/tree/dev/phh/mixed) -- h3.c does pure Metal inference, h3.c-ane does pure ANE inference... just merge them for faster inference! ~ 20% faster
 
 ### AMD
 
@@ -20,9 +23,7 @@ Expect fully vibe-coded changes. I might do human commits, but they'll likely be
 
 - llama.cpp with more Hexagon kernels -- No split GPU/NPU prefill, no fences, just more quants in NPU
 
-## Useless non obsolete projects
-
-## Obsolete project
+## Obsolete projects
 
 - [Trying to understand Rockchip RK3588's NPU](https://github.com/phhusson/rknpu-reverse-engineering) -- This NPU now has a mainline Linux & Mesa driver *and* it has an acceptable TRM documenting it.
 
@@ -64,6 +65,17 @@ That gave +10% performance.
 I also requested the same from my agent on Apple NPU, and it did through the private ANE API.
 (I have close to 0 knowledge of Apple world)
 
+
+### NPU HW Architecture remarks
+
+While agent is crunching its `/goal twice pp`, I read available NPU documentation, and I can find useful stuff. Some examples on AMD:
+
+When agent mentioned that there was a 30% lock-contention probably due to DMA, I told it that it could program DMA directly from the NPU kernel. It unblocked a lot of experiments for the agents (notably for experts), though I think none were successful.
+
+Early-on I mentioned the FIFO between neighbor NPU tiles, and it thought it was worth the experiment.
+
+We discussed quickly about MemTiles, and it led it to share LUT across neighbors (so technically unrelated to MemTiles, more related to the neighbor FIFO).
+
 ## Additional comments
 
 ### For a number of reasons, it is usually not desirable to run token generation on NPU
@@ -88,13 +100,16 @@ The CPU can't use it 100% either. Only the GPU has the number of memory ports to
 
 NPUs are very fun! They are very powerful! But you have to know what they /can't/ do
 
+NPUs can still be useful to increase token generation, using speculative decoding.
+But this is more complex. It will happen down the road, but agents will need to crunch much more work.
+
 ### NPU architectures
 
 Just a very quick overview using words you might have to google, of the NPUs I've seen:
 
 - Rockchip RK3588's NPU: fixed-pipeline matmul & conv
 - Qualcomm Snapdragon NPU: one-core VLIW RISC
-- AMD XDNA: 4x4 cores VLIW RISC with FIFO with neighbors (it's a real-life TIS100)
+- AMD XDNA: 4x4 cores VLIW RISC with FIFO with neighbors (it's a real-life TIS100 <3)
 - Apple ANE: It's completely opaque, no idea what that thing does. It seems much more limited than Qualcomm and AMD NPUs, but it looks too capable for a fixed-pipeline.
 
 ## My hardware
